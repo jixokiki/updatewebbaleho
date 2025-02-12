@@ -207,7 +207,7 @@ const Navbar = () => {
   const { user, handleLogout } = useAuth();
   return (
     <>
-      <nav className="bg-white flex justify-between items-center px-4 md:px-8 w-full md:w-11/12 h-20 shadow-md mx-auto rounded-none md:rounded-2xl border fixed top-0 md:top-5 left-1/2 -translate-x-1/2 z-40">
+      <nav className="bg-white flex justify-between items-center px-4 md:px-8 w-full md:w-11/12 h-20 shadow-md mx-auto rounded-none md:rounded-2xl border fixed top-0 md:top-5 left-1/2 -translate-x-1/2 z-30">
         <h1 className="text-3xl font-bold text-gray-900">BALEHO</h1>
         <div className="block md:hidden" onClick={toggleMenu}>
           <FaBars size={35} />
@@ -317,7 +317,7 @@ const Navbar = () => {
         </ul>
       </nav>
       <ul
-        className={`fixed z-40 top-[67px] w-full bg-white border-t border-gray-200 transform transition-transform flex flex-col gap-5 p-10 font-semibold text-center ${
+        className={`fixed top-[67px] w-full bg-white border-t border-gray-200 transform transition-transform flex flex-col gap-5 p-10 font-semibold text-center ${
           isOpen
             ? "-translate-x-0"
             : "-translate-x-full transition-transform duration-500"

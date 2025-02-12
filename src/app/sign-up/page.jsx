@@ -250,16 +250,16 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
     // New order form fields
-    // location: "",
-    // rentalDate: "",
-    // rentalDuration: "",
-    // customRentalDuration: "",
-    // package: "Full Package",
-    // companyName: "",
-    // companyEmail: "",
-    // companyPhone: "",
-    // companyAddress: "",
-    // bankAccount: "",
+    location: "",
+    rentalDate: "",
+    rentalDuration: "",
+    customRentalDuration: "",
+    package: "Full Package",
+    companyName: "",
+    companyEmail: "",
+    companyPhone: "",
+    companyAddress: "",
+    bankAccount: "",
   });
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);

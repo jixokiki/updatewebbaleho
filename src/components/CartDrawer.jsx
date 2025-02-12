@@ -1697,7 +1697,7 @@ const CartDrawer = () => {
             </label>
           )}
         </div>
-        <div className="drawer-side z-50">
+        <div className="drawer-side z-50 mt-20">
           <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
           <ul className="menu p-4 w-[500px] min-h-full bg-base-200 text-base-content">
             {cart.length === 0 && jangkauanCustomData.length === 0 && (

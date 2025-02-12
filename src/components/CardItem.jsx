@@ -3029,7 +3029,18 @@ const [showDetails, setShowDetails] = useState(false);
   };
   return (
     <div className="w-full rounded overflow-hidden shadow-lg">
-      <img className="w-full h-44 object-cover" src={imageUrl} alt={judul} onClick={handleImageClick} />
+      {/* <img className="w-full h-44 object-cover" src={imageUrl} alt={judul} onClick={handleImageClick} /> */}
+      <div className="relative w-full h-44">
+  <img
+    className="w-full h-full object-cover brightness-75"
+    src={imageUrl}
+    alt={judul}
+    onClick={handleImageClick}
+  />
+  <div className="absolute inset-0 flex items-center justify-center">
+    <span className="text-white text-lg font-semibold">{judul}</span>
+  </div>
+</div>
       {showDetails && (
       <div className="px-6 py-3">
         {fakultas && (

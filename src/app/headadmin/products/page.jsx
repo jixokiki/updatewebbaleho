@@ -916,7 +916,17 @@ const Product = () => {
   const handleUpdateStatusProduct = async (id) => {
     try {
       await updateDoc(doc(db, "products", id), {
-        statusProduct: "Billboard Sedang Disewa",
+        statusProduct: "Disetujui",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDeclineUpdateStatusProduct = async (id) => {
+    try {
+      await updateDoc(doc(db, "products", id), {
+        statusProduct: "Tidak Disetujui",
       });
     } catch (error) {
       console.log(error);
@@ -1181,11 +1191,17 @@ const Product = () => {
                   <td>{product.statusCustome}</td>
                   <td>
 
-                  {/* <button
+                  <button
                     className="btn btn-success"
                     onClick={() => handleUpdateStatusCustome(product.id)}
                   >
                     Sewa Custome
+                  </button>
+                  <button
+                    className="btn btn-error"
+                    onClick={() => handleDeclineUpdateStatusProduct(product.id)}
+                  >
+                    Decline Sewa
                   </button>
                   <button
                     className="btn btn-info ml-2"
@@ -1193,7 +1209,7 @@ const Product = () => {
                   >
                     Sewa
                   </button>
-                  <button
+                  {/* <button
                     className="btn btn-warning ml-2"
                     onClick={() => handleSetAvailableCustome(product.id)}
                   >
@@ -1204,13 +1220,13 @@ const Product = () => {
                     onClick={() => handleSetAvailableProduct(product.id)}
                   >
                     Available Sewa
-                  </button>
+                  </button> */}
                     <button
                       className="btn btn-error"
                       onClick={() => handleDelete(product.id, product.image)}
                     >
                       Delete
-                    </button> */}
+                    </button>
                   </td>
                 </tr>
               ))}

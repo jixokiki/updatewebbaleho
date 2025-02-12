@@ -735,6 +735,7 @@ import { collection, onSnapshot, doc, getDoc, serverTimestamp, setDoc, updateDoc
 import useProduct from "@/app/hooks/useProduct";
 import CardItemTampilan from "@/components/CardItemTampilan";
 import useNavigation from "../hooks/useNavigation";
+import Product from "./product/page";
 
 export default function Home() {
   const { user, userProfile } = useAuth();
@@ -797,28 +798,51 @@ export default function Home() {
       console.log("User Profile:", userProfile); // Debugging: Check user profile data
   
       const namaPembeli = userProfile.email || "Nama Tidak Diketahui"; // Menggunakan email atau displayName, atau default jika tidak tersedia
-  
-      // Ambil data dari form (formData)
-      const userData = {
-        role: "user",
-        status: "online",
-        location: formData.location,
-        rentalDate: formData.rentalDate,
-        rentalDuration: formData.rentalDuration,
-        customRentalDuration: formData.customRentalDuration,
-        package: formData.package,
-        companyName: formData.companyName,
-        companyEmail: formData.companyEmail,
-        companyPhone: formData.companyPhone,
-        companyAddress: formData.companyAddress,
-        timeStamp: serverTimestamp(),
-      };
+//JANGAN DIHAPUS  
+      // // Ambil data dari form (formData)
+      // const userData = {
+      //   role: "user",
+      //   status: "online",
+      //   location: formData.location,
+      //   rentalDate: formData.rentalDate,
+      //   rentalDuration: formData.rentalDuration,
+      //   customRentalDuration: formData.customRentalDuration,
+      //   package: formData.package,
+      //   companyName: formData.companyName,
+      //   companyEmail: formData.companyEmail,
+      //   companyPhone: formData.companyPhone,
+      //   companyAddress: formData.companyAddress,
+      //   timeStamp: serverTimestamp(),
+      // };
+
+const userName = userProfile?.displayName || userProfile?.email; 
+
+const userData = {
+  role: "user",
+  status: "online",
+  userName, // Biarkan undefined jika belum tersedia
+  location: formData.location,
+  rentalDate: formData.rentalDate,
+  rentalDuration: formData.rentalDuration,
+  customRentalDuration: formData.customRentalDuration,
+  package: formData.package,
+  companyName: formData.companyName,
+  companyEmail: formData.companyEmail,
+  companyPhone: formData.companyPhone,
+  companyAddress: formData.companyAddress,
+  timeStamp: serverTimestamp(),
+};
+
+
+
+
   
       console.log("User Data:", userData); // Debugging: Check user data to be saved
   
       // Menyimpan data pengguna ke Firestore collection 'users'
       const userDocRef = doc(db, "users", userProfile.uid); // Menggunakan UID dari Firebase Auth untuk ID pengguna
-      await setDoc(userDocRef, userData);
+      await setDoc(userDocRef, userData, { merge: true }); // << Tambahkan merge: true     
+      // await setDoc(userDocRef, userData);
   
       console.log("Data pengguna berhasil disimpan:", userData);
   
@@ -1141,6 +1165,7 @@ export default function Home() {
             </div>
           )}
         </div>
+        <Product/>
       </div>
       <Footer />
     
